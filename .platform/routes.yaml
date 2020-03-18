@@ -6,7 +6,7 @@
 "http://www.{default}/":
   type: upstream
   upstream: "app:http"
-  primary: true
+  # primary: true
   cache:
       enabled: false
 
