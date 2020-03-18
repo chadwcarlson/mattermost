@@ -8,29 +8,29 @@ hooks:
     chmod +x bin/mattermost
 
 relationships:
-    database: "database:postgresql"
-    search: "search:elasticsearch"
+  database: "database:postgresql"
+  search: "search:elasticsearch"
 
 web:
-    upstream:
-        socket_family: tcp
-        protocol: http
+  upstream:
+    socket_family: tcp
+    protocol: http
 
-    commands:
-        start: ./start.sh
+  commands:
+    start: ./start.sh
 
-    locations:
-        '/':
-            # The public directory of the application relative to its root.
-            root: 'client'
-            index:
-                - "root.html"
+  locations:
+    '/':
+      # The public directory of the application relative to its root.
+      root: 'client'
+      index:
+        - "root.html"
+      allow: true
+      rules:
+        \.(css|js|gif|jpe?g|png|ttf|eot|woff2?|otf|html|ico|svg|map|json|woff?)$:
             allow: true
-            rules:
-                \.(css|js|gif|jpe?g|png|ttf|eot|woff2?|otf|html|ico|svg|map|json|woff?)$:
-                    allow: true
-                ^/robots\.txt$:
-                    allow: true
+        ^/robots\.txt$:
+            allow: true
 
 disk: 1024
 
@@ -50,3 +50,6 @@ mounts:
   'plugins':
     source: local
     source_path: files/plugins
+  'client':
+    source: local
+    source_path: files/client
