@@ -1,7 +1,8 @@
-DATABASE_REL=database
-SEARCH_REL="search"
-
 export MM_SERVICESETTINGS_LISTENADDRESS=":$PORT"
+
+# DATABASE
+
+DATABASE_REL=database
 
 export MM_SQLSETTINGS_DRIVERNAME=postgres
 
@@ -11,7 +12,11 @@ DB_PATH=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[
 DB_HOST=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[0].host | echo $(read s; echo ${s//\"} ))
 DB_PORT=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[0].port | echo $(read s; echo ${s//\"} ))
 
-export MM_SQLSETTINGS_DATASOURCE=$(echo "$MM_SQLSETTINGS_DRIVERNAME://$DB_USERNAME:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_PATH?sslmode=disable&connect_timeout=10")
+export MM_SQLSETTINGS_DATASOURCE=$(echo \"$MM_SQLSETTINGS_DRIVERNAME://$DB_USERNAME:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_PATH?sslmode=disable&connect_timeout=10\")
+
+# ELASTICSEARCH
+
+SEARCH_REL=search
 
 export MM_ELASTICSEARCHSETTINGS_CONNECTIONURL="http://search.internal:9200"
 export MM_ELASTICSEARCHSETTINGS_USERNAME=""
