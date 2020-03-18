@@ -5,6 +5,8 @@ type: 'golang:1.14'
 hooks:
   build: |
     chmod +x start.sh
+    chmod +x bin/platform
+    ./bin/platform
     chmod +x bin/mattermost
 
 relationships:
