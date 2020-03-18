@@ -1,0 +1,32 @@
+name: app
+type: 'golang:1.14'
+
+relationships:
+    database: "database:postgresql"
+    search: "search:elasticsearch"
+web:
+    upstream:
+        socket_family: tcp
+        protocol: http
+
+    commands:
+        start: ./start.sh
+
+    locations:
+        '/':
+            # The public directory of the application relative to its root.
+            root: 'client'
+            index:
+                - "root.html"
+            allow: true
+            rules:
+                \.(css|js|gif|jpe?g|png|ttf|eot|woff2?|otf|html|ico|svg|map|json|woff?)$:
+                    allow: true
+                ^/robots\.txt$:
+                    allow: true
+disk: 1024
+mounts:
+    '/config/': 'shared:files/config-files'
+    '/logs/': 'shared:files/log-files'
+    '/data/': 'shared:files/data-files'
+    '/dist/files': 'shared:files/dist-files'
