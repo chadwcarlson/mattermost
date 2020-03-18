@@ -1,4 +1,5 @@
 name: app
+
 type: 'golang:1.14'
 
 hooks:
@@ -9,6 +10,7 @@ hooks:
 relationships:
     database: "database:postgresql"
     search: "search:elasticsearch"
+
 web:
     upstream:
         socket_family: tcp
@@ -29,10 +31,22 @@ web:
                     allow: true
                 ^/robots\.txt$:
                     allow: true
+
 disk: 1024
+
 mounts:
-    '/config/': 'shared:files/config-files'
-    '/logs/': 'shared:files/log-files'
-    '/data/': 'shared:files/data-files'
-    '/dist/files': 'shared:files/dist-files'
-    'plugins': 'shared:files/dist-files'
+  'config':
+    source: local
+    source_path: files/config-files
+  'logs':
+    source: local
+    source_path: files/log-files
+  'data':
+    source: local
+    source_path: files/data-files
+  'dist/files':
+    source: local
+    source_path: files/dist-files
+  'plugins':
+    source: local
+    source_path: files/plugins
