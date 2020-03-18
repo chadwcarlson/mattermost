@@ -2,7 +2,9 @@ name: app
 type: 'golang:1.14'
 
 hooks:
-  build: chmod +x start.sh
+  build: |
+    chmod +x start.sh
+    chmod +x /bin/mattermost
 
 relationships:
     database: "database:postgresql"
