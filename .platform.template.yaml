@@ -24,7 +24,7 @@ info:
   name: Mattermost
   # Human-readable descriptive text for the template. Supports limited HTML.
   description: |
-      <p>This template builds the Echo framework for Platform.sh.  It includes a minimalist application skeleton for demonstration, but you are free to alter it as needed.</p>
+      <p>This template builds Mattermost on Platform.sh, configuring the deployment through user-defined environment variables.</p>
       <p>Mattermost is an open-source messaging framework written in Go and React.</p>
   # A list of tags associated with the template.
   tags:

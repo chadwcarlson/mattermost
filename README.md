@@ -1,22 +1,3 @@
-# Deployable Mattermost on Platform.sh
-
-This is a simple no-thrills binary based deployment of Mattermost on Platform.sh
-
-The configuration happens through environment variables. See `.environment` for what we currently set.
-
-The only variable that changes between environments is the *Site URL* so this one is set in the `start.sh` script
-
-The `update.sh` allows to update the version
-
-> You can also compile the Mattermost source on Platform.sh if you want to adapt any behaviour, although for basic usage this is not required.
-
-## Todo
-
-* finish update.sh
-* figure-out other configuration variables we might want to set.
-
----
-
 # Mattermost for Platform.sh
 
 <p align="center">
@@ -25,7 +6,7 @@ The `update.sh` allows to update the version
 </a>
 </p>
 
-This template builds Mattermost on Platform.sh using the...
+This template builds Mattermost on Platform.sh, configuring the deployment through user-defined environment variables.
 
 Mattermost is an open-source messaging framework written in Go and React.
 
@@ -37,7 +18,15 @@ Mattermost is an open-source messaging framework written in Go and React.
 
 ## Post-install
 
-Lorem ipsum.
+When Mattermost has been deployed, you can complete the installation by creating your first admin user through the site itself.
+
+## Customizations
+
+The following changes have been made relative from initializing a Mattermost project from its upstream binaries. If using this project as a reference for your own existing project, replicate the changes below to your project.
+
+* The `.platform.app.yaml`, `.platform/services.yaml`, and `.platform/routes.yaml` files have been added.  These provide Platform.sh-specific configuration and are present in all projects on Platform.sh.  You may customize them as you see fit.
+* Mattermost binaries are downloaded during the build hook in `setup.sh`. You can edit that file to download a newer version of the upstream on a new environment to update.
+* Environment variables are set in the `.environment` file, which override default settings created in Mattermost's `/app/config/config.json` file, which allow  allow Mattermost to connect to PostgreSQL and Elasticsearch.
 
 ## References
 
