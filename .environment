@@ -10,7 +10,7 @@ DB_PATH=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[
 DB_HOST=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[0].host | echo $(read s; echo ${s//\"} ))
 DB_PORT=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[0].port | echo $(read s; echo ${s//\"} ))
 
-export MM_SQLSETTINGS_DATASOURCE=$(echo "postgres://$DBUSERNAME:main@database.internal:5432/main?sslmode=disable&connect_timeout=10")
+export MM_SQLSETTINGS_DATASOURCE=$(echo "postgres://${DBUSERNAME}:main@database.internal:5432/main?sslmode=disable&connect_timeout=10")
 export MM_ELASTICSEARCHSETTINGS_CONNECTIONURL="http://search.internal:9200"
 export MM_ELASTICSEARCHSETTINGS_USERNAME=""
 export MM_ELASTICSEARCHSETTINGS_PASSWORD=""
