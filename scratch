@@ -1,10 +1,28 @@
 
 export MM_SERVICESETTINGS_LISTENADDRESS=":$PORT"
+
+# DATABASE
+
+DATABASE_REL=database
+
 export MM_SQLSETTINGS_DRIVERNAME="postgres"
-export MM_SQLSETTINGS_DATASOURCE="postgres://main:main@database.internal:5432/main?sslmode=disable&connect_timeout=10"
+
+DB_USERNAME=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[0].username | echo $(read s; echo ${s//\"} ))
+DB_PASSWORD=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[0].password | echo $(read s; echo ${s//\"} ))
+DB_PATH=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[0].path | echo $(read s; echo ${s//\"} ))
+DB_HOST=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[0].host | echo $(read s; echo ${s//\"} ))
+DB_PORT=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[0].port | echo $(read s; echo ${s//\"} ))
+
+export MM_SQLSETTINGS_DATASOURCE=$(echo \"${MM_SQLSETTINGS_DRIVERNAME//\"}://$DB_USERNAME:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_PATH?sslmode=disable&connect_timeout=10\")
+
+# ELASTICSEARCH
+
+SEARCH_REL=search
+
 export MM_ELASTICSEARCHSETTINGS_CONNECTIONURL="http://search.internal:9200"
 export MM_ELASTICSEARCHSETTINGS_USERNAME=""
 export MM_ELASTICSEARCHSETTINGS_PASSWORD=""
+
 export MM_LOGSETTINGS_ENABLEFILE=false
 export MM_LOGSETTINGS_FILELOCATION="./logs/"
 export MM_NOTIFICATIONLOGSETTINGS_ENABLEFILE=false
