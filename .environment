@@ -19,8 +19,3 @@ export MM_LOGSETTINGS_ENABLEFILE=false
 export MM_LOGSETTINGS_FILELOCATION="./logs/"
 export MM_NOTIFICATIONLOGSETTINGS_ENABLEFILE=false
 export MM_NOTIFICATIONLOGSETTINGS_FILELOCATION="./logs/"
-
-
-DATABASE_REL=database
-DBUSERNAME=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq .$DATABASE_REL[0].username | echo $(read s; echo ${s//\"} ))
-export MM_SQLSETTINGS_DATASOURCE=$(echo "postgres://${DBUSERNAME}:main@database.internal:5432/main?sslmode=disable&connect_timeout=10")
