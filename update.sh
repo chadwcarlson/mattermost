@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 echo $MATTERMOST_VERSION
 #if [ -z "$MATTERMOST_VERSION" ] ; then
   mkdir -p _update
@@ -7,7 +9,7 @@ echo $MATTERMOST_VERSION
   fi
   tar xzf mattermost-${MATTERMOST_VERSION}-linux-amd64.tar.gz;
   rm -rf ../ENTERPRISE-EDITION-LICENSE.txt  ../NOTICE.txt  ../README.md  ../bin  ../client  ../fonts  ../i18n  ../logs  ../prepackaged_plugins  ../templates
-  cp -Rf mattermost/* ../ 
+  cp -Rf mattermost/* ../
 #else
 #    echo "Required environment variable MATTERMOST_VERSION have not been set. Update can not proceed." 1>&2
 #    exit 1
