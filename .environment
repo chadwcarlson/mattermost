@@ -1,4 +1,4 @@
-export MM_LISTENADDRESS=":8888"
+export MM_LISTENADDRESS="127.0.0.1:8888"
 export MM_SQLSETTINGS_DRIVERNAME="postgres"
 export MM_SQLSETTINGS_DATASOURCE="postgres://main:main@database.internal:5432/main?sslmode=disable&connect_timeout=10"
 export MM_ELASTICSEARCHSETTINGS_CONNECTIONURL="http://search.internal:9200"
