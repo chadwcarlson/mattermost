@@ -35,3 +35,4 @@ mounts:
     '/logs/': 'shared:files/log-files'
     '/data/': 'shared:files/data-files'
     '/dist/files': 'shared:files/dist-files'
+    'plugins': 'shared:files/dist-files'

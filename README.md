@@ -25,7 +25,7 @@ The `update.sh` allows to update the version
 </a>
 </p>
 
-This template builds Mattermost on Platform.sh using the
+This template builds Mattermost on Platform.sh using the...
 
 Mattermost is an open-source messaging framework written in Go and React.
 
