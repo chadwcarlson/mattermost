@@ -50,6 +50,6 @@ mounts:
   'plugins':
     source: local
     source_path: files/plugins
-  'client':
-    source: local
-    source_path: files/client
+  # 'client':
+  #   source: local
+  #   source_path: files/client
