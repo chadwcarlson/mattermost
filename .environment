@@ -1,13 +1,13 @@
-$DATABASE_REL="database"
-$SEARCH_REL="search"
+DATABASE_REL="database"
+SEARCH_REL="search"
 
 export MM_SQLSETTINGS_DRIVERNAME="postgres"
 
-$DB_USERNAME=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq $DATABASE_REL[0].username )
-$DB_PASSWORD=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq $DATABASE_REL[0].password )
-$DB_PATH=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq $DATABASE_REL[0].path )
-$DB_HOST=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq $DATABASE_REL[0].host )
-$DB_PORT=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq $DATABASE_REL[0].port )
+DB_USERNAME=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq $DATABASE_REL[0].username )
+DB_PASSWORD=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq $DATABASE_REL[0].password )
+DB_PATH=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq $DATABASE_REL[0].path )
+DB_HOST=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq $DATABASE_REL[0].host )
+DB_PORT=$( echo "$PLATFORM_RELATIONSHIPS" | base64 --decode | jq $DATABASE_REL[0].port )
 
 export MM_SQLSETTINGS_DATASOURCE=$(echo "$MM_SQLSETTINGS_DRIVERNAME://${DB_USERNAME//\"}:${DB_PASSWORD//\"}@${DB_HOST//\"}:${DB_PORT//\"}/${DB_PATH//\"}?sslmode=disable&connect_timeout=10")
 
