@@ -19,6 +19,10 @@ The goal here would be to figure out why `.environment` files are having trouble
 
 related: https://platformsh.slack.com/archives/CEDK8KCSC/p1584569822222200
 
+# Working from binaries
+
+This was a rather quick turn-around, and we would probably be better off building from source. At the moment, users can specify a new version in `setup.sh` that is installed in the build hook, giving the zipped binaries. 
+
 # Template-builder independent updates via source operations
 
 Part of Ori's original work wanted to be able to call an `update.sh` script via source operations. It has not been included here as of yet.

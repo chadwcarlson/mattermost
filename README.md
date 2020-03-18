@@ -26,7 +26,6 @@ The following changes have been made relative from initializing a Mattermost pro
 
 * The `.platform.app.yaml`, `.platform/services.yaml`, and `.platform/routes.yaml` files have been added.  These provide Platform.sh-specific configuration and are present in all projects on Platform.sh.  You may customize them as you see fit.
 * Mattermost binaries are downloaded during the build hook in `setup.sh`. You can edit that file to download a newer version of the upstream on a new environment to update.
-* The Mattermost binary installs to the `/app/bin` directory of your application container.
 * Environment variables are set in the `.environment` file, which override default settings created in Mattermost's `/app/config/config.json` file, which allow  allow Mattermost to connect to PostgreSQL and Elasticsearch.
 
 ## References
