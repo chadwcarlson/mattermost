@@ -1,9 +1,11 @@
 name: app
+
 type: 'golang:1.14'
 
 relationships:
     database: "database:postgresql"
     search: "search:elasticsearch"
+
 web:
     upstream:
         socket_family: tcp
@@ -24,7 +26,9 @@ web:
                     allow: true
                 ^/robots\.txt$:
                     allow: true
+
 disk: 1024
+
 mounts:
     '/config/': 'shared:files/config-files'
     '/logs/': 'shared:files/log-files'
